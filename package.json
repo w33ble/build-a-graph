@@ -1,0 +1,74 @@
+{
+  "name": "build-a-graph",
+  "version": "0.0.0",
+  "description": "Code for GraphQL PHX talk",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint '*.{js,mjs}' 'src/**/*.{js,mjs}'",
+    "test": "npm run lint",
+    "version": "npm-auto-version",
+    "start": "graphpack",
+    "build": "graphpack build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w33ble/build-a-graph.git"
+  },
+  "keywords": [],
+  "files": [
+    "src/",
+    "index.js",
+    "index.mjs",
+    "CHANGELOG.md",
+    "AUTHORS.md"
+  ],
+  "author": "Joe Fleming (https://github.com/w33ble)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/w33ble/build-a-graph/issues"
+  },
+  "homepage": "https://github.com/w33ble/build-a-graph",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "ignore": [
+      "package.json"
+    ],
+    "linters": {
+      "*.{js,mjs}": [
+        "eslint --fix",
+        "git add"
+      ],
+      "*.{js,mjs,json,css}": [
+        "prettier --write"
+      ]
+    }
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "dependencies": {
+    "monk": "^7.1.1"
+  },
+  "devDependencies": {
+    "@w33ble/npm-auto-tools": "*",
+    "csv-parse": "^4.6.5",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.11.0",
+    "graphpack": "^1.0.9",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.4",
+    "prettier": "^1.16.4",
+    "stream-transform": "^2.0.1"
+  }
+}
