@@ -1,0 +1,11 @@
+type Movie {
+  id: String!
+  type: String!
+  title: String!
+  year: Int!
+  runtimeMinutes: Int!
+}
+
+extend type Query {
+  movies(id: String, title: String, limit: Int, skip: Int): [Movie]
+}
