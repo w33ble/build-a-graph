@@ -4,6 +4,7 @@ type Movie {
   title: String!
   year: Int
   runtimeMinutes: Int
+  genres: [String]!
 }
 
 extend type Query {

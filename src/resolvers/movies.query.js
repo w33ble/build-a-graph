@@ -12,6 +12,8 @@ export default async (_, { id, title, year, limit = 10, skip = 0 }) => {
     limit: Math.min(limit, 20), // never more than 20
     skip,
   });
+
   if (docs.length === 0) return null;
-  return docs;
+
+  return docs.map(doc => ({ ...doc, genres: doc.genres.split(',') }));
 };
