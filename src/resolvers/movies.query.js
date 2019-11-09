@@ -2,8 +2,9 @@ import monk from 'monk';
 
 const db = monk('localhost/moviedb');
 
-export default async (_, { id, title, limit = 10, skip = 0 }) => {
+export default async (_, { id, title, year, limit = 10, skip = 0 }) => {
   const query = {};
+  if (year) query.year = String(year);
   if (title) query.title = title;
   if (id) query.id = id;
 

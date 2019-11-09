@@ -7,5 +7,5 @@ type Movie {
 }
 
 extend type Query {
-  movies(id: String, title: String, limit: Int, skip: Int): [Movie]
+  movies(id: String, title: String, year: Int, limit: Int, skip: Int): [Movie]
 }
