@@ -1,0 +1,12 @@
+type Person {
+  id: String!
+  name: String!
+  birthYear: Int
+  deathYear: Int
+  professions: [String]
+  knownFor: [String]
+}
+
+extend type Query {
+  people(id: String, name: String, birthYear: Int, deathYear: Int, limit: Int, skip: Int): [Person]
+}
