@@ -2,8 +2,8 @@ type Movie {
   id: String!
   type: String!
   title: String!
-  year: Int!
-  runtimeMinutes: Int!
+  year: Int
+  runtimeMinutes: Int
 }
 
 extend type Query {
