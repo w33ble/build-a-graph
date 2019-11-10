@@ -1,4 +1,5 @@
 import monk from 'monk';
+import { normalizeMovie } from './movies.query';
 
 const db = monk('localhost/moviedb');
 
@@ -15,4 +16,15 @@ export default async (_, { id, name, birthYear, deathYear, limit = 10, skip = 0 
   });
   if (docs.length === 0) return null;
   return docs;
+};
+
+export const knownFor = async (person, { limit = 10, skip = 0 }) => {
+  const docs = await db.get('movies').find(
+    { id: { $in: person.knownFor } },
+    {
+      limit: Math.min(limit, 5), // never more than 5
+      skip,
+    }
+  );
+  return docs.map(normalizeMovie);
 };

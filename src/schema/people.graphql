@@ -4,7 +4,7 @@ type Person {
   birthYear: Int
   deathYear: Int
   professions: [String]
-  knownFor: [String]
+  knownFor(limit: Int, skip: Int): [Movie]
 }
 
 extend type Query {

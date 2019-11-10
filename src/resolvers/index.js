@@ -1,11 +1,14 @@
 import echo from './echo.query';
 import movies from './movies.query';
-import people from './people.query';
+import people, { knownFor } from './people.query';
 
 export default {
   Query: {
     echo,
     movies,
     people,
+  },
+  Person: {
+    knownFor,
   },
 };

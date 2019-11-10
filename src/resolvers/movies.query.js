@@ -2,6 +2,8 @@ import monk from 'monk';
 
 const db = monk('localhost/moviedb');
 
+export const normalizeMovie = movie => ({ ...movie, genres: movie.genres.split(',') });
+
 export default async (_, { id, title, year, limit = 10, skip = 0 }) => {
   const query = {};
   if (year) query.year = String(year);
@@ -15,5 +17,5 @@ export default async (_, { id, title, year, limit = 10, skip = 0 }) => {
 
   if (docs.length === 0) return null;
 
-  return docs.map(doc => ({ ...doc, genres: doc.genres.split(',') }));
+  return docs.map(normalizeMovie);
 };
