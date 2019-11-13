@@ -1,5 +1,5 @@
 import echo from './echo.query';
-import movies from './movies.query';
+import movies, { people as moviePeople } from './movies.query';
 import people, { knownFor } from './people.query';
 
 export default {
@@ -10,5 +10,8 @@ export default {
   },
   Person: {
     knownFor,
+  },
+  Movie: {
+    people: moviePeople,
   },
 };

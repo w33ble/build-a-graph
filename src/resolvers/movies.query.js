@@ -19,3 +19,15 @@ export default async (_, { id, title, year, limit = 10, skip = 0 }) => {
 
   return docs.map(normalizeMovie);
 };
+
+export const people = async (movie, { limit, skip = 0, name, profession }) => {
+  const matches = movie.people.filter(p => {
+    const matchName = name ? p.name === name : true;
+    const matchProfession = profession ? p.professions.includes(profession) : true;
+    return matchName && matchProfession;
+  });
+
+  if (!limit && !skip) return matches;
+
+  return matches.slice(skip, limit + skip || matches.length);
+};
